@@ -7,3 +7,11 @@ datamodel: datamodel.graphql
 
 # You can only access the API when providing JWTs that are signed with this secret
 secret: mysecret123
+
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client/
+
+hooks:
+  post-deploy:
+    - prisma generate
