@@ -37,15 +37,14 @@ async function login(parent, {email, password}, ctx, info) {
   }
 }
 
-function post(parent, args, context, info) {
+async function post(parent, args, context, info) {
   const userId = getUserId(context)
   return context.db.createLink(
     {
       url: args.url,
       description: args.description,
       postedBy: { connect: { id: userId } },
-    },
-    info,
+    }
   )
 }
 
